@@ -1,0 +1,658 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 10em;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: $white;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.h2 {
+	margin: 1.5em 0 1em;
+	text-align: center;
+	font-weight: 300;
+	font-size: 4rem;
+	text-transform: uppercase;
+}
+
+// nav section
+
+.nav {
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 9em;
+	background-color: $white;
+	z-index: 100;
+	&-logo {
+		margin-left: 1em;
+		font-size: 3rem;
+	}
+	&-icon {
+		color: $grey;
+		text-decoration: none;
+		&__text {
+			margin: 0.3em;
+			color: $black;
+		}
+	}
+	&-burger {
+		padding: 1em;
+		margin-right: 1em;
+		border: 1px solid transparent;
+		background: none;
+		cursor: pointer;
+		z-index: 100;
+		&:focus {
+			outline: none;
+			border: 1px solid rgba(255, 255, 255, 0.5);
+			border-radius: 0.4em;
+		}
+		&:hover {
+			.nav-burger__bars,
+			.nav-burger__bars::after,
+			.nav-burger__bars::before {
+				background-color: $grey;
+			}
+		}
+		&__box {
+			position: relative;
+			width: 4em;
+			height: 3em;
+		}
+		&__bars,
+		&__bars::after,
+		&__bars::before {
+			position: absolute;
+			right: 0;
+			height: 0.4em;
+			width: 100%;
+			content: '';
+			background-color: $black;
+			transition: background-color 0.5s;
+		}
+		&__bars {
+			&::after {
+				top: 1.3em;
+			}
+			&::before {
+				top: 2.6em;
+			}
+		}
+	}
+	&-box {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 70%;
+		font-size: 1.8rem;
+		background-color: $white;
+		transform: translateY(-200%);
+		transition: transform 0.3s;
+		&-style {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: 3em;
+		}
+		&__item {
+			padding: 1.9em;
+			text-decoration: none;
+			color: $black;
+			transition: color 0.3s, background-color 0.3s;
+			&:hover {
+				background-color: $black;
+				color: $white;
+			}
+		}
+	}
+}
+
+.nav-active {
+	transform: translateY(0);
+}
+
+//header
+
+.header {
+	height: 50em;
+	color: $white;
+	&-bg {
+		@include bgStyles;
+		background-image: url('../../dist/img/jungle-1807476_640.jpg');
+		&__hero {
+			@include bgHero;
+		}
+	}
+	&-box {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		height: 100%;
+		padding: 5em;
+		&__text {
+			font-size: 2rem;
+		}
+		&__h1 {
+			font-size: 3.5rem;
+		}
+	}
+}
+
+//about us section
+
+.about-us {
+	height: 60em;
+	&__title {
+		margin-bottom: 2em;
+	}
+	&-box {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 40em;
+		&__img {
+			margin: 0 2em;
+			height: 55%;
+			background-position: center;
+		}
+	}
+	&-text {
+		margin: 2em 2em;
+		margin-left: 3em;
+		text-align: center;
+		&__title {
+			margin-bottom: 1em;
+			font-size: 1.7rem;
+		}
+		&__p {
+			font-size: 1.3rem;
+			line-height: 1.5em;
+			font-weight: 300;
+		}
+	}
+}
+
+.big {
+	display: none;
+}
+
+//baner section
+
+.baner {
+	height: 30em;
+	&-bg {
+		@include bgStyles;
+		background-image: url('../../dist/img/girl-5785590_640.jpg');
+		&__hero {
+			@include bgHero;
+		}
+	}
+	&-box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		&__title {
+			padding: 0.8em 2em;
+			text-align: center;
+			font-size: 2rem;
+			font-weight: 600;
+			color: $white;
+			border: 1px solid$white;
+		}
+	}
+}
+
+//offers section
+
+.offers {
+	height: 60em;
+	&__text {
+		margin-bottom: 1.7em;
+		font-size: 2rem;
+		text-align: center;
+	}
+	&-box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin-bottom: 2em;
+	}
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+		margin: 1em;
+		height: 25em;
+		width: 20em;
+		font-size: 1.4rem;
+		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+		border-radius: 4px;
+		transition: transform 0.3s;
+		&:hover {
+			transform: scale(110%);
+		}
+		&-title {
+			margin-top: 0.7em;
+			font-size: 2rem;
+			font-weight: 400;
+		}
+		&-price {
+			margin-bottom: 0.5em;
+			font-size: 3.5rem;
+			font-weight: 700;
+		}
+		&-option {
+			margin: 0.65em 0;
+			&-disabled {
+				color: $light-grey;
+			}
+		}
+		&-btn {
+			padding: 0.4em 3.6em;
+			margin: 2em 0;
+			font-size: 1.7rem;
+			background-color: transparent;
+			color: $light-grey;
+			border-radius: 10px;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+			border: 1px solid transparent;
+			transition: color 0.3s, background-color 0.3s;
+			&:hover {
+				background-color: $light-green;
+				color: $black;
+			}
+		}
+	}
+	&-button {
+		margin: 5em 0 7em;
+		text-align: center;
+		&__item {
+			margin: 1em;
+			padding: 1em 2em;
+			font-size: 1.5rem;
+			text-decoration: none;
+			color: $black;
+			border: 0.2em solid$black;
+			border-radius: 1em;
+			transition: background-color 0.3s, color 0.3s;
+			&:hover {
+				background-color: $black;
+				color: $white;
+			}
+		}
+	}
+	&-secoundbox {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		&__item {
+			margin: 2em;
+		}
+	}
+}
+
+.i {
+	&-first {
+		color: $light-green;
+	}
+}
+
+//contact
+
+.contact {
+	overflow: hidden;
+	&-all {
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+		align-items: center;
+		height: 50em;
+	}
+	&-text {
+		&__title {
+			text-align: center;
+			font-size: 2rem;
+			letter-spacing: 0.1em;
+		}
+		&__p {
+			font-size: 1.5rem;
+			margin: auto;
+		}
+		&__link {
+			display: none;
+			font-size: 1.4rem;
+			margin-top: 0.5em;
+			&-icon {
+				margin-right: 0.7em;
+			}
+		}
+	}
+	&-box {
+		position: relative;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		width: 55em;
+		&__label {
+			text-transform: uppercase;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+		&__item {
+			&-input {
+				padding: 0.6em 0;
+				background-color: transparent;
+				border: none;
+				border-bottom: 2px solid$black;
+				width: 17em;
+				&:focus {
+					border: 2px solid$black;
+					outline: none;
+				}
+			}
+			&-textarea {
+				width: 17em;
+				height: 3em;
+				resize: vertical;
+				min-height: 3em;
+				max-height: 10em;
+			}
+		}
+		&__msg {
+			margin-top: 1em;
+			resize: vertical;
+			min-height: 1em;
+		}
+		&__btn {
+			margin: 2em 0;
+			width: 10em;
+			height: 3em;
+			border: 2px solid $black;
+			background-color: transparent;
+			border-radius: 0.4em;
+			font-weight: bold;
+			text-transform: uppercase;
+			transition: color 0.3s, background-color 0.3s;
+			&:hover {
+				background-color: #000000;
+				color: #ffffff;
+			}
+			&-icon {
+				margin: 0 0.5em;
+			}
+		}
+	}
+}
+.map {
+	height: 55em;
+	text-align: center;
+	iframe {
+		width: 100%;
+		padding: 3em;
+	}
+}
+
+//footer
+
+.footer {
+	background-color: $light-white;
+	height: 31em;
+	&-body {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		height: 23em;
+	}
+	&-logo {
+		color: $grey;
+		font-size: 2rem;
+		&__text {
+			color: $black;
+		}
+		&__icon {
+			margin: 0 0.5em;
+		}
+	}
+	&-box {
+		display: flex;
+		justify-content: center;
+	}
+	&-item {
+		display: flex;
+		flex-direction: column;
+		margin: 0 1.5em;
+		&__title {
+			margin-bottom: 0.5em;
+			font-size: 1rem;
+		}
+		&__link {
+			position: relative;
+			margin: 0.7em 0;
+			font-size: 1rem;
+			color: $grey;
+			text-decoration: none;
+			transition: color 0.3s;
+			&:hover {
+				color: $light-grey;
+			}
+		}
+	}
+	&-line {
+		height: 0.1em;
+		width: 100%;
+		background-color: $grey;
+	}
+	&-text {
+		margin: 2.5em;
+		text-align: center;
+		font-size: 1.2rem;
+		color: $grey;
+	}
+}
+
+@media (min-width: 576px) {
+	.header-bg {
+		background-image: url('../../dist/img/jungle-1807476_1920.jpg');
+	}
+	.big {
+		display: block;
+	}
+	.small {
+		display: none;
+	}
+	.baner {
+		&-bg {
+			background-image: url('../../dist/img/girl-5785590_1920.jpg');
+		}
+	}
+	.footer {
+		&-logo {
+			font-size: 3rem;
+		}
+		&-item {
+			margin: 0 3em;
+			&__title {
+				font-size: 1.3rem;
+			}
+			&__link {
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
+@media (min-width: 768px) {
+	.nav {
+		&-logo {
+			margin-left: 2em;
+		}
+		&-burger {
+			margin-right: 2em;
+		}
+	}
+	.about-us {
+		height: 50em;
+		&__title {
+			margin-bottom: 1em;
+		}
+		&-box {
+			flex-direction: row;
+			align-items: start;
+			&__img {
+				height: 60%;
+			}
+		}
+		&-text {
+			margin: 0 2em;
+			text-align: left;
+			&__title {
+				font-size: 2rem;
+			}
+			&__p {
+				font-size: 1.5rem;
+				line-height: 2em;
+			}
+		}
+	}
+	.baner-box__title {
+		font-size: 3rem;
+		padding: 0.8em 4em;
+	}
+	.offers-box {
+		flex-direction: row;
+	}
+	.footer {
+		&-logo {
+			font-size: 3.5rem;
+		}
+		&-item {
+			&__title {
+				font-size: 2.5rem;
+			}
+		}
+	}
+	.contact {
+		&-text {
+			&__title {
+				font-size: 2.5rem;
+			}
+			&__p {
+				font-size: 2rem;
+			}
+		}
+		&-box {
+			text-align: center;
+			&__item {
+				&-input {
+					margin: 1em 0;
+					width: 30em;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.nav {
+		justify-content: space-around;
+		&-box {
+			position: static;
+			width: auto;
+			height: auto;
+			transform: translateX(0);
+			background: transparent;
+			&-style {
+				display: block;
+				margin: auto;
+			}
+		}
+		&-logo {
+			margin: 0;
+		}
+		&-burger {
+			display: none;
+		}
+	}
+	.header-box {
+		text-align: left;
+	}
+	.about-us {
+		&-box {
+			&__img {
+				height: 85%;
+			}
+		}
+		&-text {
+			margin-left: 7em;
+		}
+	}
+	.baner-box__title {
+		font-size: 4rem;
+		padding: 0.8em 4em;
+	}
+	.footer {
+		&-logo {
+			font-size: 4.5rem;
+		}
+	}
+	.contact {
+		&-all {
+			flex-direction: row;
+		}
+		&-text {
+			&__title {
+				text-align: left;
+				font-size: 3rem;
+			}
+			&__p {
+				margin: 0.5em 0 4.5em 0;
+			}
+			&__link {
+				display: block;
+			}
+		}
+		&-box {
+			align-items: start;
+			text-align: left;
+			&__email {
+				position: absolute;
+				top: 0;
+				right: 10%;
+			}
+			&__item {
+				&-input {
+					margin: auto;
+					width: 17em;
+				}
+				&-textarea {
+					width: 38em;
+				}
+			}
+		}
+	}
+}
